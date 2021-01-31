@@ -1,0 +1,25 @@
+{% extends 'base_page.html' %}
+{% load i18n %}
+{% load clearances %}
+
+
+{% block page_body %}
+    <h1 class="text-4xl font-bold text-white sm:text-center my-8">{% translate "Screener History" %}</h1>
+    <div class="hidden sm:grid grid-cols-2">
+        <div class="uppercase text-white ml-auto bg-green-500 bg-opacity-25 rounded-full py-1 px-2 mr-2 font-bold">← {% translate "Screened In" %}</div>
+        <div class="uppercase text-white bg-gray-500 bg-opacity-25 rounded-full py-1 px-2 mr-auto ml-2 font-bold">{% translate "Screened Out" %} →</div>
+    </div>
+    <div class="mt-6">
+        {% for contact in contact_list %}
+            {% ifchanged %}
+            <div class="text-center">
+                <h3 class="sm:inline-block text-white font-bold mt-12 px-8 mb-6 sm:text-xl border-b border-gray-500">{{ contact.inserted_at|date }}</h3>
+            </div>
+            {% endifchanged %}
+            <div>
+                {% clearance_form contact=contact as form %}
+                {% clearance_partial contact=contact form=form %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

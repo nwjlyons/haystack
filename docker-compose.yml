@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    web:
+        build: .
+        volumes:
+            - .:/code
+        ports:
+            - "9000:8000"
+        environment:
+            - PORT=8000
+            - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+            - GUNICORN_CMD_ARGS=--reload
+            - DJANGO_SETTINGS_MODULE=haystack.settings.base
+            - SECRET_KEY=secret
+            - ALLOWED_HOSTS=localhost
+            - DEBUG=true
+            - SECURE_SSL_REDIRECT=false
+            - SESSION_COOKIE_SECURE=false
+        depends_on:
+          - postgres
+        # Explicitly specify process types to avoid honcho running release command
+        command: ["honcho", "--no-prefix", "start", "web"]
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=postgres

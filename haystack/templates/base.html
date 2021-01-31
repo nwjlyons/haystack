@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/index.js' %}" defer></script>
+</head>
+<body class="bg-gray-800 h-full">
+    {% flash_messages messages=messages %}
+    <div class="mx-auto max-w-screen-lg flex justify-end pt-6">
+        <details data-controller="details" data-action="click@window->details#closeOnClickOutside turbo:before-cache@document->details#close keydown->details#closeOnEscape" class="relative">
+            <summary class="summary-reset p-2 focus:ring-2 focus:ring-purple-500 cursor-pointer">
+                <span class="inline-block text-white">{% translate "Settings" %}</span>
+            </summary>
+            <turbo-frame id="settings-menu" class="absolute right-0" target="_top" src="{% url 'settings' %}"></turbo-frame>
+        </details>
+    </div>
+    {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% if messages %}
+       <div class="absolute w-full mt-6">
+           {% for message in messages %}
+               <div class="text-center">
+                   {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                       <div class="py-1 px-3 rounded text-green-900 bg-green-200 mb-2 inline-block border border-green-500">
+                   {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                       <div class="py-1 px-3 rounded text-red-900 bg-red-200 mb-2 inline-block border border-red-500">
+                   {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                       <div class="py-1 px-3 rounded text-blue-900 bg-blue-200 mb-2 inline-block border border-blue-500">
+                   {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                       <div class="py-1 px-3 rounded text-yellow-900 bg-yellow-200 mb-2 inline-block border border-yellow-500">
+                   {% else %}
+                       <div class="py-1 px-3 rounded text-gray-900 bg-gray-200 mb-2 inline-block border border-gray-500">
+                   {% endif %}
+                           <span>{{ message }}</span>
+                       </div>
+               </div>
+           {% endfor %}
+       </div>
+{% endif %}

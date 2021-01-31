@@ -1,0 +1,33 @@
+import { Controller } from "stimulus"
+
+
+export default class extends Controller {
+
+  disconnect() {
+      this.close()
+  }
+
+  closeOnClickOutside(event) {
+      if (this.element.contains(event.target)) return
+      this.close()
+  }
+
+  closeOnEscape(keyboardEvent) {
+      if (keyboardEvent.key === 'Escape') {
+          this.close()
+      }
+  }
+
+  open() {
+      this.element.open = true;
+  }
+
+  close() {
+      this.element.open = false;
+  }
+
+  toggle() {
+      this.element.open = !this.element.open;
+  }
+
+}

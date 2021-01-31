@@ -1,0 +1,8 @@
+{% load i18n %}
+<turbo-frame id="settings-menu">
+    <nav class="p-4 bg-gradient-to-b from-blue-300 to-blue-400 rounded-xl w-72 shadow-xl">
+        <div class="text-sm text-white p-2">{{ user.email }}</div>
+        <div><a href="{% url 'contact_list' %}" class="block p-2 hover:bg-blue-200 rounded">{% translate "Contacts" %}</a></div>
+        <div><a href="{% url 'clearance_list' %}" class="block p-2 hover:bg-blue-200 rounded">{% translate "Screener History" %}</a></div>
+    </nav>
+</turbo-frame>

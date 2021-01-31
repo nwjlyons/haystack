@@ -1,0 +1,13 @@
+{% load form_errors from forms %}
+<div class="field{% if field.errors %} field--error{% endif %}">
+    {% if field.label %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {% endif %}
+    {% form_errors errors=field.errors %}
+    <div>
+        {{ field }}
+    </div>
+    {% if field.help_text %}
+        <small>{{ field.help_text }}</small>
+    {% endif %}
+</div>

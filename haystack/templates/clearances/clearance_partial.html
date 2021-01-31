@@ -1,0 +1,23 @@
+{% load clearances %}
+
+
+<turbo-frame id="contact-{{ contact.id }}">
+    <div class="sm:w-1/2 {% if contact.is_denied %}ml-auto{% endif %}">
+        <div class="{% if contact.is_approved %}bg-green-500 sm:mr-4{% elif contact.is_denied %}bg-gray-500 sm:ml-4{% endif %} bg-opacity-25 rounded-full p-2 flex mb-2 items-center">
+            <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center">
+                <div class="text-lg font-extrabold">{{ contact.name|first }}</div>
+            </div>
+            <div class="ml-2">
+                <a href="{% url 'contact_detail' contact.id %}" data-turbo-frame="_top" class="text-white font-bold text-lg tracking-wide">{{ contact.name }}</a>
+                <div class="text-white">{{ contact.email }}</div>
+            </div>
+            <form action="{% url 'clearance_update' contact.pk %}" method="post" class="ml-auto">
+                {% csrf_token %}
+                {{ form.clearance_status }}
+                <button type="submit" class="{% if contact.is_approved %}bg-green-200{% elif contact.is_denied %}bg-gray-500{% endif %} w-14 h-8 rounded-full flex items-center cursor-pointer">
+                    <div class="{% if contact.is_approved %}ml-auto mr-1{% elif contact.is_denied %}mr-auto ml-1{% endif %} w-6 h-6 bg-gray-800 rounded-full"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+</turbo-frame>
