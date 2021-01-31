@@ -1,4 +1,16 @@
 
-```
-django-admin startproject --template=https://github.com/nwjlyons/django-project-template/archive/master.zip --name Procfile --name .gitignore --extension yml <project_name>
-```
+# Haystack
+
+Exploring [Hotwire](https://hotwire.dev/) in [Django](https://www.djangoproject.com).
+
+Setup
+
+- `docker-compose build`
+- `docker-compose run web ./manage.py migrate`
+- `docker-compose run web ./manage.py createsuperuser`
+- `docker-compose up`
+
+New terminal
+
+- `cd haystack/assets`
+- `NODE_ENV=production npm run deploy`

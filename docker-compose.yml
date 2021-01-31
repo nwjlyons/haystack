@@ -6,7 +6,7 @@ services:
         volumes:
             - .:/code
         ports:
-            - "9000:8000"
+            - "8000:8000"
         environment:
             - PORT=8000
             - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
