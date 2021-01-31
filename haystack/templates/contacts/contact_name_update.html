@@ -1,18 +1,13 @@
-{% extends 'base.html' %}
 {% load i18n %}
 {% load forms %}
 
-{% block body %}
-<main class="bg-gray-700 mx-auto max-w-screen-lg rounded-t-3xl p-6 mt-16">
-    <turbo-frame id="contact-name-edit">
-        <div class="p-4 rounded-xl bg-gradient-to-r from-blue-400 to-blue-500 w-72">
-            <form action="{% url 'contact_name_update' contact.id %}" method="post" data-controller="form" data-action="turbo:submit-start->form#submitStart turbo:submit-end->form#submitEnd">
-                {% csrf_token %}
-                {% form_errors errors=form.non_field_errors %}
-                {% form_field field=form.name %}
-                <button type="submit" class="rounded-full bg-green-200 py-1 w-full" data-form-target="submit">{% translate "Rename" %}</button>
-            </form>
-        </div>
-    </turbo-frame>
-</main>
-{% endblock %}
+<turbo-frame id="contact-name-edit">
+    <div class="p-4 rounded-xl bg-gradient-to-r from-blue-400 to-blue-500 w-72">
+        <form action="{% url 'contact_name_update' contact.id %}" method="post" data-controller="form" data-action="turbo:submit-start->form#submitStart turbo:submit-end->form#submitEnd">
+            {% csrf_token %}
+            {% form_errors errors=form.non_field_errors %}
+            {% form_field field=form.name %}
+            <button type="submit" class="rounded-full bg-green-200 py-1 w-full" data-form-target="submit">{% translate "Rename" %}</button>
+        </form>
+    </div>
+</turbo-frame>
