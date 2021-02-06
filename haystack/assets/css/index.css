@@ -18,3 +18,25 @@
 summary.summary-reset::-webkit-details-marker {
   display: none;
 }
+
+
+/* purgecss ignore */
+@keyframes pop-open {
+    0% {
+        transform: scale(0.3);
+        opacity:0
+    }
+
+    75% {
+        transform: scale(1.05);
+        opacity:1
+    }
+
+    100% {
+        transform:scale(1)
+    }
+}
+/* purgecss ignore */
+.pop-open[open]>[data-details-content]{
+    animation: pop-open 0.1s both;
+}

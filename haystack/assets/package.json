@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@github/hotkey": "^1.4.2",
     "@hotwired/turbo": "^7.0.0-beta.2",
     "stimulus": "^2.0.0"
   },

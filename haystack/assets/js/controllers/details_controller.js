@@ -3,6 +3,10 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
+  static get targets() {
+      return ['input']
+  }
+
   disconnect() {
       this.close()
   }
@@ -30,4 +34,9 @@ export default class extends Controller {
       this.element.open = !this.element.open;
   }
 
+  update() {
+      if (this.hasInputTarget) {
+          this.inputTarget.focus()
+      }
+  }
 }
